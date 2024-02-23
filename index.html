@@ -2,7 +2,6 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta http-equiv="refresh" content="10;url=https://portfolio.cobalt88.com" />
 		<title>Page Moved</title>
 		<style>
 			body,
@@ -10,6 +9,7 @@
 				height: 100%;
 				margin: 0;
 				display: flex;
+				flex-direction: column;
 				justify-content: center;
 				align-items: center;
 				text-align: center;
@@ -17,13 +17,39 @@
 			.container {
 				font-family: Arial, sans-serif;
 			}
+			#countdown {
+				position: fixed;
+				top: 0;
+				width: 100%;
+				background-color: #f0f0f0;
+				color: #333;
+				padding: 10px 0;
+			}
 		</style>
 	</head>
 	<body>
+		<div id="countdown">Redirecting in <span id="redirectCountdown">10</span> seconds</div>
 		<div class="container">
 			<h1>This page has moved</h1>
 			<hr />
 			<p>Click <a href="https://portfolio.cobalt88.com">here</a> if you are not automatically redirected</p>
 		</div>
+
+		<script>
+			var timeLeft = 10; // Time in seconds
+			var countdownElement = document.getElementById("redirectCountdown");
+			var timerId = setInterval(function () {
+				timeLeft--;
+				countdownElement.textContent = timeLeft;
+				if (timeLeft <= 0) {
+					clearInterval(timerId);
+				}
+			}, 1000);
+
+			// Redirect after the countdown
+			setTimeout(function () {
+				window.location.href = "https://portfolio.cobalt88.com";
+			}, timeLeft * 1000);
+		</script>
 	</body>
 </html>
